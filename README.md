@@ -1,9 +1,6 @@
 ![](https://github.com/lithnet/laps-web/wiki/images/logo-ex-small.png)
 # Lithnet LAPS Web App is now Lithnet Access Manager!
-
-[Lithnet Access Manager](https://github.com/lithnet/access-manager) is the next generation of LAPS Web, with new features, functionality, and more.
-
-Lithnet Access Manager (AMS) is the next generation of Lithnet LAPS web. Lithnet Access Manager provides all the functionality of LAPS web, and more! This guide will explain the key differences between the products, and how to get started on your upgrade journey.
+[Lithnet Access Manager](https://github.com/lithnet/access-manager) (AMS) is the next generation of Lithnet LAPS web. Lithnet Access Manager provides all the functionality of LAPS web, and more! This guide will explain the key differences between the products, and how to get started on your upgrade journey.
 
 ### User experience
 LAPS web users will feel a sense of familiarity with the Access Manager interface - while we have freshened-up the user interface, the experience is kept similar to LAPS web to minimize the organization change impact of upgrading to AMS.
@@ -51,7 +48,7 @@ Ready to get started?
 
 If you run into any issues, you can log an [issue here on GitHub](https://github.com/lithnet/access-manager/issues/new) for support
 
+### Support for LAPS Web
+The Lithnet LAPS Web product is no longer actively supported. The repository and wiki will remain available for historical purposes. If you experience any issues with LAPS web, please migrate to Access Manager, and if the issue is still not solved, then please raise an [issue on the Access Manager GitHub page](https://github.com/lithnet/access-manager/issues/new)
 
-
-
- 
+Organizations that have licensed Access Mangager Enterprise edition are eligible for support for LAPS web, while they transition to Access Manager, up until 30 June 2022.
