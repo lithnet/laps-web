@@ -1,48 +1,57 @@
 ![](https://github.com/lithnet/laps-web/wiki/images/logo-ex-small.png)
-# Lithnet LAPS Web App
-The Lithnet LAPS Web App is an IIS application that allows you to manage access to local admin passwords that are managed by the [Microsoft Local Admin Password Solution (LAPS)](https://technet.microsoft.com/en-us/mt227395.aspx)
+# Lithnet LAPS Web App is now Lithnet Access Manager!
 
-It provides granular permissions, auditing, email alerting and rate-limited access to LAPS passwords stored in a directory and is compatible with OpenID Connect, WS-Federation (ADFS), and integrated windows authentication.
+[Lithnet Access Manager](https://github.com/lithnet/access-manager) is the next generation of LAPS Web, with new features, functionality, and more.
 
-## Features
-### Web-based accesss to LAPS passwords
-The LAPS web app provides a simple web-based and mobile-friendly interface for accessing local admin passwords. There's no need for admins to install custom software, or have access to AD administrative tools to access LAPS passwords. Simply provide the computer name, and if you have access, the password is shown.
+Lithnet Access Manager (AMS) is the next generation of Lithnet LAPS web. Lithnet Access Manager provides all the functionality of LAPS web, and more! This guide will explain the key differences between the products, and how to get started on your upgrade journey.
 
-![](https://github.com/lithnet/laps-web/wiki/images/RequestPassword.png)
+### User experience
+LAPS web users will feel a sense of familiarity with the Access Manager interface - while we have freshened-up the user interface, the experience is kept similar to LAPS web to minimize the organization change impact of upgrading to AMS.
 
-LAPS Administrators also have the option of forcing an expiry time when a password is accessed. This ensures that the password is rotated after use.
+<img src="https://github.com/lithnet/access-manager/wiki/images/web-request-laps.gif" Width="400"/>
 
-![](https://github.com/lithnet/laps-web/wiki/images/ShowPassword.png)
+We've added features like showing a phonetic breakdown of the password (great for reading passwords out over the phone) and reading the password aloud using the text-to-speech engine of the browser.
 
-### Audit success and failure event logs
-All success and failure events are logged to the event log and a file. These can be easily shipped off to a SIEM for record keeping and further analysis and reporting.
+Our products have been first and foremost designed to enhance the experience of support staff in the field, and that experience continues with AMS.
 
-![](https://github.com/lithnet/laps-web/wiki/images/AuditSuccess.png)
+### Administration and configuration experience
+We've ditched the need for IIS completely, so AMS runs as a standalone service. Along with a single installer executable, this drastically reduces the complexity of the setup and upgrade process.
 
-![](https://github.com/lithnet/laps-web/wiki/images/AuditFail.png)
+One of the biggest benefits to LAPS web administrators is that the dreaded config file has now been replaced with an intuitive configuration user interface. All configuration is now done through the configuration tool. 
 
-### Rate limiting
-To prevent mass enumeration of passwords, you can limit the number of passwords an IP address or user can access within a given period.
+<img src="https://github.com/lithnet/access-manager/wiki/images/ui-page-authz-lapstarget.png" Width="800"/>
 
-![](https://github.com/lithnet/laps-web/wiki/images/RateLimited.png)
+Instead of fighting with XML, you're now able to use the familiar built-in security editor to assign permissions. 
 
-### Modern authentication options
-The web app supports traditional integrated windows authentication, as well as external authentication providers such as [ADFS](https://github.com/lithnet/laps-web/wiki/Setting-up-authentication-with-Active-Directory-Federation-Services) or 3rd party OpenID Connect providers such as [Azure AD](https://github.com/lithnet/laps-web/wiki/Setting-up-authentication-with-Azure-Active-Directory) and [Okta](https://github.com/lithnet/laps-web/wiki/Setting-up-authentication-with-Okta). Using an external authentication provider allows you the option of providing additional protections for the application such as multifactor authentication.
+<img src="https://github.com/lithnet/access-manager/wiki/images/ui-page-authz-editsecurity-laps.png" Width="250"/>
 
-## Guides
-*   [Installing the app](https://github.com/lithnet/laps-web/wiki/Installing-the-app)
-*   [Configuration settings](https://github.com/lithnet/laps-web/wiki/Configuration-settings)
-*   [Authentication options](https://github.com/lithnet/laps-web/wiki/Authentication-options)
-*   [Branding and customisation](https://github.com/lithnet/laps-web/wiki/Branding-and-customisation)
+We've rebuilt the authorization engine to solve common complaints about LAPS web, such as the computer not being able to be part of multiple targets, or errors that occur when organizational units used in targets are removed from the directory.
 
-## Download the app
-Download the [current release](https://github.com/lithnet/laps-web/releases/)
+You'll find support for new things like smart card authentication, sending audit notifications to Slack and Microsoft Teams, and scripts automatically generated by the application to help you configure things like permission delegation in AD.
 
-## How can I contribute to the project?
-* Found an issue and want us to fix it? [Log it](https://github.com/lithnet/laps-web/issues)
-* Want to fix an issue yourself or add functionality? Clone the project and submit a pull request
-* Make a [donation](https://lithnet.io/donate) and help us cover our costs
+We know you'll just love the new features and configuration experience!
 
-## Keep up to date
-*   [Visit my blog](http://blog.lithiumblue.com)
-*   [Follow me on twitter](https://twitter.com/RyanLNewington)![](http://twitter.com/favicon.ico)
+### Licensing
+Access Manager comes in two editions - Standard and Enterprise edition. Standard edition is free for all organizations, while enterprise edition is a paid product. 
+
+However, **all scenarios supported by LAPS web, continue to be free in the Standard Edition of Access Manager**. LAPS web users can upgrade to AMS Standard edition, without any loss of functionality. In fact, the standard edition of AMS brings many new features that were not available in LAPS web, including support for accessing BitLocker recovery keys, and providing just-in-time administrative access to Windows computers.
+
+[Enterprise edition](https://github.com/lithnet/access-manager/wiki/Enterprise-Edition) offers features that were never available in LAPS web, and includes a dedicated support offering.
+
+See our [comparison guide](https://github.com/lithnet/access-manager/wiki/Access-Manager-Editions) for more information on the differences between the standard and enterprise edition offerings.
+
+### Migration
+Ready to get started?
+
+1. First, download the latest edition of Access Manager from the [releases](https://github.com/lithnet/access-manager/releases/latest) page.
+2. We recommend starting with a new server to install AMS on. Otherwise, you may run into contention over the use of the web server ports between LAPS web and IIS and the new product. 
+3. [Install the Access Manager Service](https://github.com/lithnet/access-manager/wiki/Installing-the-Access-Manager-Service). You'll need to re-setup some things like the authentication provider, email setup, and UI options.
+4. If you're using a new service account (we recommend you switch to using a group-managed service account), then you'll need to [delegate permission to the new service account](https://github.com/lithnet/access-manager/wiki/Setting-up-Microsoft-LAPS).
+5. Finally, you can automatically import all your authorization rules directly from your LAPS web config file, using the [import wizard](https://github.com/lithnet/access-manager/wiki/Importing-rules-from-Lithnet-Laps-web-app)
+
+If you run into any issues, you can log an [issue here on GitHub](https://github.com/lithnet/access-manager/issues/new) for support
+
+
+
+
+ 
