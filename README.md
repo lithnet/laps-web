@@ -51,4 +51,4 @@ If you run into any issues, you can log an [issue here on GitHub](https://github
 ### Support for LAPS Web
 The Lithnet LAPS Web product is no longer actively supported. The repository and wiki will remain available for historical purposes. If you experience any issues with LAPS web, please migrate to Access Manager, and if the issue is still not solved, then please raise an [issue on the Access Manager GitHub page](https://github.com/lithnet/access-manager/issues/new)
 
-Organizations that have licensed Access Manager Enterprise edition are eligible for support for LAPS web, while they transition to Access Manager, up until 30 June 2022.
+Organizations that have licensed Access Manager Enterprise edition are eligible for a fixed-term support for LAPS web, while they transition to Access Manager.
